@@ -1,0 +1,34 @@
+
+  <div class="container-fluid">
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card bg-transparent">
+        <h2 style="text-align:center">Quotes</h2>
+        <hr>
+        <ul *ngFor='let quotes of sortQuotes ;let i = index' class="quote-list">
+          <li>
+            <div class="card">
+              <div class="card-header">
+                <strong>{{quotes.quotes}}</strong>
+                <br>
+                Author: <em>{{quotes.author}}</em><br><br>
+                <i class="fa fa-thumbs-up" id = "upvote"  (click)="upVote(i)">:   {{quotes.likes}}</i>
+                <i class="fa fa-thumbs-down" id = "downvote"  (click)="downVote(i)">:   {{quotes.dislikes}}</i>
+                <button (click)='toggleDetails(i)' class="btn btn-success">Details</button>
+                </div>
+                <div class="card-body">
+                <app-details *ngIf='quotes.showDescription' [myQuote]='quotes' (isComplete) = 'deleteQuote($event,i)'></app-details>
+              </div>
+            </div>
+          <li>
+        </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card bg-transparent">
+        <app-quote-form (addQuote)="addNewquote($event)"></app-quote-form>
+        </div>
+      </div>
+    </div>
+  </div>
