@@ -11,6 +11,7 @@
             <div class="card">
               <div class="card-header">
                 <strong>{{quotes.quotes}}</strong>
+                <small class="date">{{quotes.Date|date}} days ago</small>
                 <br>
                 Author: <em>{{quotes.author}}</em><br><br>
                 <i class="fa fa-thumbs-up" id = "upvote"  (click)="upVote(i)">:   {{quotes.likes}}</i>
